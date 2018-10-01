@@ -1,30 +1,22 @@
-var slideIndex = 1;
-showSlides(slideIndex);
+const img_con = document.getElementById('img-con'); 
+const next = document.getElementById('next');
+const prev = document.getElementById('prev');
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+ const images = ['slide2.jpg', 'slide3.jpg','slide1.jpg'];
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+ let i = images.length;
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("Slides");
-  var dots = document.getElementsByClassName("Slider__dots--dot");
-  if (n > slides.length) {
-    slideIndex = 1
-  }
-  if (n < 1) {
-    slideIndex = slides.length
-  }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
+
+
+function plus(){
+    i = (i<images.length) ?(i= i+1):(i=1);
+    img_con.innerHTML = "<img class='img' src=img/"+images[i-1]+">";
 }
+next.addEventListener('click', plus);
+
+function less(){
+    i = (i<images.length) ?(i= i+1):(i=1);
+    img_con.innerHTML = "<img class='img' src=img/"+images[i-1]+">";
+}
+prev.addEventListener('click', less);
+  
